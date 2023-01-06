@@ -86,3 +86,30 @@ var finances = [
   ['Jan-2017', 138230],
   ['Feb-2017', 671099],
 ];
+var totalNumberOfMonths = 0;
+var totalProfitLoss = 0;
+var changeInProfitLossArray = [];
+var averageChangeInProfitLoss = 0;
+for (i = 0; i < finances.length; i++) {
+  totalNumberOfMonths++;
+}
+console.log(totalNumberOfMonths);
+for (i = 0; i < finances.length; i++) {
+  totalProfitLoss = totalProfitLoss + finances[i][1];
+}
+for (i = 0; i < finances.length; i++) {
+  if (i !== 0) {
+    changeInProfitLossArray[i] = finances[i][1] - finances[i - 1][1];
+  }
+}
+changeInProfitLossArray.shift();
+console.log(changeInProfitLossArray);
+
+
+
+// finances.forEach((e) => {
+//   console.log(e);
+//   e.forEach((f) => {
+//     console.log(f);
+//   });
+// });
