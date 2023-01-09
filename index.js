@@ -90,13 +90,18 @@ var totalNumberOfMonths = 0;
 var totalProfitLoss = 0;
 var changeInProfitLossArray = [];
 var averageChangeInProfitLoss = 0;
+var greatestRiseInProfitLoss = 0;
+var greatestDecreaseInProfitLoss = 0;
+
 for (i = 0; i < finances.length; i++) {
   totalNumberOfMonths++;
 }
 console.log(totalNumberOfMonths);
+
 for (i = 0; i < finances.length; i++) {
   totalProfitLoss = totalProfitLoss + finances[i][1];
 }
+
 for (i = 0; i < finances.length; i++) {
   if (i !== 0) {
     changeInProfitLossArray[i] = finances[i][1] - finances[i - 1][1];
@@ -107,9 +112,10 @@ console.log(changeInProfitLossArray);
 
 
 
-// finances.forEach((e) => {
-//   console.log(e);
-//   e.forEach((f) => {
-//     console.log(f);
-//   });
-// });
+console.log("Financial Analysis");
+console.log("----------------------------");
+console.log("Total Months: " + totalNumberOfMonths);
+console.log("Total: $" + totalProfitLoss);
+console.log("Average  Change: $" + averageChangeInProfitLoss);
+console.log("Greatest Increase in Profits: $" + greatestRiseInProfitLoss);
+console.log("Greatest Decrease in Profits: $" + greatestDecreaseInProfitLoss);
