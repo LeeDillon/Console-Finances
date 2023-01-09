@@ -86,32 +86,62 @@ var finances = [
   ['Jan-2017', 138230],
   ['Feb-2017', 671099],
 ];
+
+// Instantiate all required variables
 var totalNumberOfMonths = 0;
 var totalProfitLoss = 0;
 var changeInProfitLossArray = [];
+var totalChangeInProfitLoss = 0;
 var averageChangeInProfitLoss = 0;
 var greatestRiseInProfitLoss = 0;
 var greatestDecreaseInProfitLoss = 0;
 
+// Iterate through original array counting number of items
 for (i = 0; i < finances.length; i++) {
   totalNumberOfMonths++;
-}
-console.log(totalNumberOfMonths);
+};
 
+// Iterate through original array adding values together
 for (i = 0; i < finances.length; i++) {
   totalProfitLoss = totalProfitLoss + finances[i][1];
-}
+};
 
+// Iterate through original array comparing each value to the last and saving output to new array then finally deleting first empty value
 for (i = 0; i < finances.length; i++) {
   if (i !== 0) {
     changeInProfitLossArray[i] = finances[i][1] - finances[i - 1][1];
   }
-}
+};
 changeInProfitLossArray.shift();
-console.log(changeInProfitLossArray);
 
+// Iterate through new array and add values together to get total, then divide by number of values to get average
+for (i = 0; i < changeInProfitLossArray.length; i++) {
+  totalChangeInProfitLoss = totalChangeInProfitLoss + changeInProfitLossArray[i];
+};
+averageChangeInProfitLoss = totalChangeInProfitLoss / changeInProfitLossArray.length;
 
+// Created functions to calculate highest and smallest values in array
+function greatestRise() {
+  for (i = 0; i < changeInProfitLossArray.length; i++) {
+    if (changeInProfitLossArray[i] > greatestRiseInProfitLoss) {
+      greatestRiseInProfitLoss = changeInProfitLossArray[i];
+    }
+  }
+}
 
+function greatestDecrease() {
+  for (i = 0; i < changeInProfitLossArray.length; i++) {
+    if (changeInProfitLossArray[i] < greatestDecreaseInProfitLoss) {
+      greatestDecreaseInProfitLoss = changeInProfitLossArray[i];
+    }
+  }
+}
+
+// Calling functions
+greatestRise()
+greatestDecrease()
+
+// Console log out final results in a presentable format
 console.log("Financial Analysis");
 console.log("----------------------------");
 console.log("Total Months: " + totalNumberOfMonths);
